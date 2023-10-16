@@ -109,7 +109,7 @@ public class MainMenu extends javax.swing.JFrame {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(128, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(121, 121, 121))
         );
@@ -137,23 +137,23 @@ public class MainMenu extends javax.swing.JFrame {
         jInternalFrame2.setFrameIcon(null);
         jInternalFrame2.setVisible(true);
 
-        jLabel2.setText("THIS WOULD BE WHERE I HAD MY TRANSLATION.... IF I HAD ONE");
+        jLabel2.setText("THIS WOULD BE WHERE I HAVE MY TRANSLATION.... IF I HAD ONE");
 
         javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
         jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
         jInternalFrame2Layout.setHorizontalGroup(
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                .addGap(180, 180, 180)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addGap(135, 135, 135))
         );
         jInternalFrame2Layout.setVerticalGroup(
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                .addGap(135, 135, 135)
+                .addGap(139, 139, 139)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         jInternalFrame3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -169,14 +169,14 @@ public class MainMenu extends javax.swing.JFrame {
         jInternalFrame3Layout.setHorizontalGroup(
             jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame3Layout.createSequentialGroup()
-                .addGap(90, 90, 90)
+                .addGap(120, 120, 120)
                 .addComponent(jLabel3)
-                .addContainerGap(185, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         jInternalFrame3Layout.setVerticalGroup(
             jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame3Layout.createSequentialGroup()
-                .addGap(145, 145, 145)
+                .addGap(147, 147, 147)
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -188,9 +188,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jInternalFrame3)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, 0)
-                        .addComponent(jInternalFrame2))
+                    .addComponent(jInternalFrame2)
                     .addComponent(jInternalFrame1, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
         jPanel2Layout.setVerticalGroup(
@@ -198,6 +196,7 @@ public class MainMenu extends javax.swing.JFrame {
             .addComponent(jInternalFrame3)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jInternalFrame2)
+                .addGap(0, 0, 0)
                 .addComponent(jInternalFrame1))
         );
 
@@ -223,6 +222,19 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+       int response = JOptionPane.showConfirmDialog(this, "Johnny Johnny!", "Papa?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+       
+       if(response == JOptionPane.YES_OPTION){
+           response = JOptionPane.showConfirmDialog(this, "Eating Sugar?", "Yes, Papa?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+       }
+       
+       if(response == JOptionPane.NO_OPTION){
+           response = JOptionPane.showConfirmDialog(this, "Telling Lies?", "No, Papa!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+       }
+       if(response == JOptionPane.NO_OPTION){
+           JOptionPane.showConfirmDialog(this, "Open Wide!", "Hahaha!", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+       }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
