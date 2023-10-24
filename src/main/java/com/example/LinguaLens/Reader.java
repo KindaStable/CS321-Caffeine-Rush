@@ -127,7 +127,7 @@ public class Reader {
     // Your objective: Store the detected text (denoted by 'resp') and the associated word boundaries (represented by 'wordBoundaries'). 
     // Useful information:
     // - 'resp' is a String that contains the whole detected text.
-    // - 'wordBoundaries' is a map with the structure: Map<String, List<Vertex>>
+    // - 'wordBoundaries' is a map with the structure: Map<String, List<Vertex>> that contains the dimensions of the words' bounding boxes.
     // - The bounding boxes provided by the 'wordBoundaries' are relative to the image's dimensions, where the top-left corner is (0,0), x-coordinates increase from left to right, and y-coordinates increase from top to bottom.
    
     // Below is a sample method call for storage. You can draw inspiration from it if you wish.
