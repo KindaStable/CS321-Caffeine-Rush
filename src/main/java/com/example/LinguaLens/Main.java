@@ -12,7 +12,12 @@ class Main {
         String filePath = UI.chooseImage();
         //UI.showDialogue(filePath, "Thanks", 0);
         String readText = Reader.read(filePath);
-        UI.showDialogue(readText, "Thanks", 0);
+
+        if(readText != "")
+        {
+            UI.showDialogue(readText, "Thanks", 0);
+        }
+
         u.print("End of Program");
         System.exit(0);
     }
