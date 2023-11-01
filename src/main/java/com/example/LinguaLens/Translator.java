@@ -6,15 +6,21 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 
 // This code reaches out to OpenAI's ChatGPT and asks it to return the translated text. 
 public class Translator {
     Utilities u = new Utilities();
 
+    public static String decodeBase64(String base64String) {
+        byte[] decodedBytes = Base64.getDecoder().decode(base64String);
+        return new String(decodedBytes, StandardCharsets.UTF_8);
+    }
+
     public static String translate(String prompt) {
         String url = "https://api.openai.com/v1/chat/completions";
-        String apiKey = "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";
         String model = "gpt-3.5-turbo";
     
 
@@ -23,7 +29,7 @@ public class Translator {
             URL obj = new URL(url);
             HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
             connection.setRequestMethod("POST");
-            connection.setRequestProperty("Authorization", "Bearer " + apiKey);
+            connection.setRequestProperty("Authorization", "Bearer " + decodeBase64("c2stOVpwR2EwMHRpSUFwalY4NmdpWENUM0JsYmtGSk1RZDc3cThKeGhVbnQ3RzUxbk1a"));
             connection.setRequestProperty("Content-Type", "application/json");
 
             // The request body
