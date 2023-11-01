@@ -9,7 +9,6 @@ import java.net.URL;
 
 
 // This code reaches out to OpenAI's ChatGPT and asks it to return the translated text. 
-// It then returns the translated text to the Reader class. 
 public class Translator {
     Utilities u = new Utilities();
 
