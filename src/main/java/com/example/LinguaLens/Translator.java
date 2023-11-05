@@ -4,9 +4,9 @@ package com.example.LinguaLens;
 public class Translator {
     Utilities u = new Utilities();
     //TODO: Actually write the translator class after the implementation of the Jackson project.
-    public void promptAI(String message)
-    {
-        u.print("Hello World!");
+    public String translate(String text, String language) {
+        String translatedText = "";
+        return translatedText;
     }
 
 }
