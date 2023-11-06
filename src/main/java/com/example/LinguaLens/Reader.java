@@ -19,6 +19,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Base64;
 
+/**
+ * The Reader class provides methods for reading and detecting text from an image file using the Google Vision API.
+ * It also includes utility methods for sorting and storing the detected text and word boundaries.
+ */
 public class Reader {
 
     // We instantiate a utilities object for any helper functions we might need.
@@ -65,7 +69,12 @@ public class Reader {
         return wordBoundaries;
     }
 
-    // If we don't sort the map, then the text is not stored in natural reading order. Perhaps this is just to fix a mistake I made storing things into the map earlier, but it should be fine.
+    /**
+     * Sorts a map of word boundaries by the x-coordinate of the leftmost vertex in each list of vertices.
+     * 
+     * @param unsortedMap the unsorted map of word boundaries to be sorted.
+     * @return a new map with the same keys and values as the input map, but sorted by the x-coordinate of the leftmost vertex in each list of vertices.
+     */
     public static Map<String, List<Vertex>> sortByLeftMostVertex(Map<String, List<Vertex>> unsortedMap) {
     return unsortedMap.entrySet()
             .stream()
@@ -79,7 +88,12 @@ public class Reader {
     }
 
 
-    // The main function to read and detect text from the provided image path.
+    /**
+     * Reads and detects text from an image file using the Google Vision API.
+     * 
+     * @param filePath the path to the image file to be read
+     * @return a String representing the detected text
+     */
     public static String read(String filePath) {
         String resp = "";
         
@@ -130,9 +144,9 @@ public class Reader {
     // - 'wordBoundaries' is a map with the structure: Map<String, List<Vertex>> that contains the dimensions of the words' bounding boxes.
     // - The bounding boxes provided by the 'wordBoundaries' are relative to the image's dimensions, where the top-left corner is (0,0), x-coordinates increase from left to right, and y-coordinates increase from top to bottom.
    
-    // Below is a sample method call for storage. You can draw inspiration from it if you wish.
+    // Below is a sample method call for storage. You can draw inspiration from it if you wish. 
 
-    // StorageManager.storeData(resp, wordBoundaries);
+    // StorageManager.storeData(resp, wordBoundaries); 
 
     // To view the data that has been stored in wordBoundaries, you can uncomment the below block. This will print each detected word and its vertices.
 
@@ -150,7 +164,8 @@ public class Reader {
     */
 
 
-        //TODO: Once the storage manager is complete, this return will be obsolete, as we will be able to pull resp and any other information we want from it.
+        // TODO: Once the StorageManager class is complete, this return will be obsolete. 
+        // Since we will be able to pull resp and any other information we want from it. 
         return resp;
     }
 
