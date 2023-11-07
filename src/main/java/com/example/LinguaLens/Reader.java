@@ -21,7 +21,9 @@ import java.util.Base64;
 
 /**
  * The Reader class provides methods for reading and detecting text from an image file using the Google Vision API.
- * It also includes utility methods for sorting and storing the detected text and word boundaries.
+ * It also includes utility methods for sorting and storing the detected text and word boundaries (functionality removed).
+ * 
+ * @author Garrett Thrower
  */
 public class Reader {
 
@@ -94,7 +96,7 @@ public class Reader {
      * @param filePath the path to the image file to be read
      * @return a String representing the detected text
      */
-    public static String read(String filePath) {
+    public static void read(String filePath) {
         String resp = "";
         
         wordBoundaries = sortByLeftMostVertex(wordBoundaries);
@@ -136,37 +138,9 @@ public class Reader {
             e.printStackTrace();
         }
 
-    // TODO: Hey Braden! This task is for you, buddy. 😉
-            
-    // Your objective: Store the detected text (denoted by 'resp') and the associated word boundaries (represented by 'wordBoundaries'). 
-    // Useful information:
-    // - 'resp' is a String that contains the whole detected text.
-    // - 'wordBoundaries' is a map with the structure: Map<String, List<Vertex>> that contains the dimensions of the words' bounding boxes.
-    // - The bounding boxes provided by the 'wordBoundaries' are relative to the image's dimensions, where the top-left corner is (0,0), x-coordinates increase from left to right, and y-coordinates increase from top to bottom.
-   
-    // Below is a sample method call for storage. You can draw inspiration from it if you wish. 
 
-    // StorageManager.storeData(resp, wordBoundaries); 
-
-    // To view the data that has been stored in wordBoundaries, you can uncomment the below block. This will print each detected word and its vertices.
-
-    /*
-    for (Map.Entry<String, List<Vertex>> entry : wordBoundaries.entrySet()) {
-        String word = entry.getKey();
-        List<Vertex> vertices = entry.getValue();
-        
-        System.out.print(word + ": ");
-        for (Vertex vertex : vertices) {
-            System.out.print("(" + vertex.x + ", " + vertex.y + ") ");
-        }
-        System.out.println(); // Move to the next line after printing all vertices for a word
-    }
-    */
-
-
-        // TODO: Once the StorageManager class is complete, this return will be obsolete. 
-        // Since we will be able to pull resp and any other information we want from it. 
-        return resp;
+        // We store the detected text and word boundaries in the database.
+        StorageManager.storeReaderValues(resp, wordBoundaries);
     }
 
     private static String encodeImage(String filePath) throws IOException {
