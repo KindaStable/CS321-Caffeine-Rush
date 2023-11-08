@@ -33,7 +33,7 @@ public class Translator {
      */
     public static void translate(String prompt) {
         String url = "https://api.openai.com/v1/chat/completions";
-        String model = "gpt-3.5-turbo";
+        String model = "gpt-3.5-turbo-1106";
 
         try {
             URL obj = new URL(url);
