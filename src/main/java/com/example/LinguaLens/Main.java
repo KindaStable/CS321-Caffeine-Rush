@@ -24,7 +24,14 @@ public class Main {
         String escapedText = StringEscapeUtils.escapeJson(StorageManager.getImageText());
 
         // Construct the prompt for the translation request.
-        String prompt = "Translate the all of the below text into " + Locale.getDefault().getDisplayLanguage() + ". Ensure that all of the text is displayed: " + escapedText;
+        String prompt = "INPUT TEXT: " 
+        + escapedText
+        + "INSTRUCTIONS: "
+        + "First, detect the language of the input text and then list the language of the text after a flag named Input Language (like this. Input Language: LANGUAGE). " 
+        + "After doing this, translate the input text into "
+        + Locale.getDefault().getDisplayLanguage()
+        + " and store ONLY THE TRANSLATED TEXT between brackets [like this.]";
+
 
         // If there is text to translate, translate it, store the translation, and display it to the user.
         if (!escapedText.isEmpty()) {
