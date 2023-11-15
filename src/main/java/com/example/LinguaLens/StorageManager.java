@@ -5,7 +5,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -15,9 +18,12 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import com.example.LinguaLens.Reader.Vertex;
 
+import java.util.stream.Stream;
+import java.nio.file.Files;
+
 /**
  * This class stores the inputted image, text from the image,  the boundaries 
- * of the text from the image, and the translated text.
+ * of the text from the image, and the translated text
  * 
  * @author Braden Doty
  */
@@ -25,6 +31,7 @@ public class StorageManager {
     private static Map<String, List<Vertex>> storedWordMap = new HashMap<>();
     private static String storedImageText = "";
     private static String storedTranslation = "";
+    private static String translationLanguage = "";
 
     // Specify the folder names
     private static final String HISTORY_FOLDER = "History";
@@ -51,7 +58,11 @@ public class StorageManager {
      */
     public static void storeTranslation(String translation) {
         try {
-            storedTranslation = translation;
+            String[] tempStore = translation.split("\\[");
+            translationLanguage = tempStore[0];
+            System.out.println(translationLanguage);
+            storedTranslation = tempStore[1];
+            storedTranslation= storedTranslation.substring(0, storedTranslation.length() - 1);
 
             createFolderIfNotExists(HISTORY_FOLDER);
             
@@ -65,9 +76,15 @@ public class StorageManager {
             
             //Create a FileWriter and specify the file path
             File newFile = new File(HISTORY_FOLDER, fileName);
+
+            deleteOldestFileIfLimitReached(HISTORY_FOLDER, 10);
+
             writeTextToFile(translation, newFile);
 
             System.out.println("File '" + fileName + "' has been created.");
+
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -125,6 +142,15 @@ public class StorageManager {
     public static String getLastTranslation() {
         return storedTranslation;
     }
+
+    /**
+     * Returns the language of the inputted text
+     * @return
+     */
+    public static String getTranslationLanguage()
+    {
+        return translationLanguage;
+    }
     
     //Check if a folder exist in the current working directory. If not create one
     private static void createFolderIfNotExists(String folderName) {
@@ -144,4 +170,37 @@ public class StorageManager {
             writer.write(text);
         }
     }
+
+    /**
+     * Delets the oldest file in the History Folder afer the limit of text files
+     * is past
+     */
+    private static void deleteOldestFileIfLimitReached(String folderName, int fileLimit) {
+        try {
+            Path historyFolderPath = Paths.get(System.getProperty("user.dir"), folderName);
+
+            // List all files in the History folder
+            try (Stream<Path> paths = Files.list(historyFolderPath)) {
+                long fileCount = paths.count();
+
+                // If the file count exceeds the limit, delete the oldest file
+                if (fileCount >= fileLimit) {
+                    Files.walk(historyFolderPath)
+                            .filter(Files::isRegularFile)
+                            .min(Comparator.comparingLong(path -> path.toFile().lastModified()))
+                            .ifPresent(oldestFile -> {
+                                try {
+                                    Files.delete(oldestFile);
+                                    System.out.println("Deleted the oldest file: " + oldestFile.getFileName());
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            });
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
