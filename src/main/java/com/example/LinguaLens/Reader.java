@@ -96,7 +96,7 @@ public class Reader {
      * @param filePath the path to the image file to be read
      * @return a String representing the detected text
      */
-    public static void read(String filePath) {
+    public static String read(String filePath) {
         String resp = "";
         
         wordBoundaries = sortByLeftMostVertex(wordBoundaries);
@@ -141,6 +141,7 @@ public class Reader {
 
         // We store the detected text and word boundaries in the database.
         StorageManager.storeReaderValues(resp, wordBoundaries);
+        return resp;
     }
 
     private static String encodeImage(String filePath) throws IOException {
