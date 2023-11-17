@@ -56,13 +56,21 @@ public class StorageManager {
      * 
      * @param translation The translated text from the API in a string
      */
-    public static void storeTranslation(String translation) {
+  public static void storeTranslation(String translation) {
         try {
             String[] tempStore = translation.split("\\[");
-            translationLanguage = tempStore[0];
-            System.out.println(translationLanguage);
-            storedTranslation = tempStore[1];
-            storedTranslation= storedTranslation.substring(0, storedTranslation.length() - 1);
+            String translationLanguageLine = tempStore[0];
+            translationLanguage = translationLanguageLine.substring(translationLanguageLine.indexOf(":") + 2).trim();
+    
+            // Check if there is a closing bracket and extract the text inside brackets.
+            if (tempStore.length > 1) {
+                storedTranslation = tempStore[1].split("\\]")[0];
+            } else {
+                storedTranslation = ""; // No translation text found within brackets
+            }
+    
+            String language = translationLanguageLine.substring(translationLanguageLine.indexOf(":") + 2); // +2 to skip the colon and the space
+            translationLanguage = language;
 
             createFolderIfNotExists(HISTORY_FOLDER);
             
@@ -79,12 +87,9 @@ public class StorageManager {
 
             deleteOldestFileIfLimitReached(HISTORY_FOLDER, 10);
 
-            writeTextToFile(translation, newFile);
+            writeTextToFile(storedTranslation, newFile);
 
             System.out.println("File '" + fileName + "' has been created.");
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
