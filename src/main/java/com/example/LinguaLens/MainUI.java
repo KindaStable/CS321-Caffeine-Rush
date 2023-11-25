@@ -377,6 +377,7 @@ public class MainUI extends javax.swing.JFrame {
         String directory = fileDialog.getDirectory();
         String filename = fileDialog.getFile();
 
+        StorageManager.storeImageLocation(directory, filename);
         if (directory != null && filename != null) {
             return directory + filename;
         }
