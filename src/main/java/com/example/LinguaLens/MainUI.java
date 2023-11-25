@@ -9,7 +9,6 @@ import java.util.Locale;
 import org.apache.commons.text.StringEscapeUtils;
 
 
-
 public class MainUI extends javax.swing.JFrame {
 
     //ImageIcon imageToTranslate = new ImageIcon("userfile from file chooser");
@@ -39,16 +38,12 @@ public class MainUI extends javax.swing.JFrame {
         ogtextTextArea = new javax.swing.JTextArea();
         ogtextLabel = new javax.swing.JLabel();
         historyInternalFrame = new javax.swing.JInternalFrame();
-        historyButton2 = new javax.swing.JButton();
-        historyButton1 = new javax.swing.JButton();
-        historyButton3 = new javax.swing.JButton();
-        historyButton4 = new javax.swing.JButton();
-        historyButton5 = new javax.swing.JButton();
-        historyButton6 = new javax.swing.JButton();
-        historyButton7 = new javax.swing.JButton();
-        historyButton8 = new javax.swing.JButton();
-        historyButton9 = new javax.swing.JButton();
-        historyButton10 = new javax.swing.JButton();
+
+        javax.swing.JButton historyButtons[] = new javax.swing.JButton[10];
+        for (int index = 0; index < 10; index++) {
+            historyButtons[index] = new javax.swing.JButton();
+        }
+
         imageInternalFrame = new javax.swing.JInternalFrame();
         translateButton = new javax.swing.JButton();
         openfileButton = new javax.swing.JButton();
@@ -63,6 +58,7 @@ public class MainUI extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1200, 675));
         setResizable(false);
         setSize(new java.awt.Dimension(1200, 675));
+
 
         translationInternalFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         translationInternalFrame.setIconifiable(true);
@@ -82,6 +78,7 @@ public class MainUI extends javax.swing.JFrame {
         translationTextArea.setWrapStyleWord(true);
         translationTextArea.setFocusable(false);
         translationTextArea.setPreferredSize(new java.awt.Dimension(100, 100));
+
         translationScrollPane.setViewportView(translationTextArea);
 
         translationLabel.setText("Translated to: ");
@@ -101,6 +98,7 @@ public class MainUI extends javax.swing.JFrame {
                 .addComponent(translationScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+
         ogtextInternalFrame.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         ogtextInternalFrame.setIconifiable(true);
         ogtextInternalFrame.setTitle("Original Text");
@@ -111,17 +109,18 @@ public class MainUI extends javax.swing.JFrame {
         ogtextInternalFrame.setVerifyInputWhenFocusTarget(false);
         ogtextInternalFrame.setVisible(true);
 
-        ogtextScrollPane.setPreferredSize(new java.awt.Dimension(224, 86));
-
         ogtextTextArea.setEditable(false);
         ogtextTextArea.setColumns(20);
         ogtextTextArea.setLineWrap(true);
         ogtextTextArea.setRows(5);
         ogtextTextArea.setWrapStyleWord(true);
         ogtextTextArea.setFocusable(false);
+
         ogtextScrollPane.setViewportView(ogtextTextArea);
+        ogtextScrollPane.setPreferredSize(new java.awt.Dimension(224, 86));
 
         ogtextLabel.setText("Detected Language: ");
+
 
         javax.swing.GroupLayout ogtextInternalFrameLayout = new javax.swing.GroupLayout(ogtextInternalFrame.getContentPane());
         ogtextInternalFrame.getContentPane().setLayout(ogtextInternalFrameLayout);
@@ -138,6 +137,8 @@ public class MainUI extends javax.swing.JFrame {
                 .addComponent(ogtextScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+
+
         historyInternalFrame.setTitle("History");
         historyInternalFrame.setToolTipText("");
         historyInternalFrame.setFocusable(false);
@@ -146,81 +147,23 @@ public class MainUI extends javax.swing.JFrame {
         historyInternalFrame.setPreferredSize(new java.awt.Dimension(285, 637));
         historyInternalFrame.setVisible(true);
 
-        historyButton2.setEnabled(false);
-        historyButton2.setFocusable(false);
-        historyButton2.setMaximumSize(new java.awt.Dimension(273, 60));
-        historyButton2.setMinimumSize(new java.awt.Dimension(273, 60));
-        historyButton2.setPreferredSize(new java.awt.Dimension(273, 60));
-        historyButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historyButton2ActionPerformed(evt);
-            }
+        for (int index = 0; index < 10; index++) {
+             //historyButtons[index].setEnabled(false);
+             historyButtons[index].setToolTipText("default...");
+             historyButtons[index].setFocusable(false);
+             historyButtons[index].setMaximumSize(new java.awt.Dimension(273, 60));
+             historyButtons[index].setMinimumSize(new java.awt.Dimension(273, 60));
+             historyButtons[index].setPreferredSize(new java.awt.Dimension(273, 60));
+             historyButtons[index].addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    if(evt.getSource() instanceof javax.swing.JButton){
+                       ((javax.swing.JButton)evt.getSource()).setBackground(Color.red);
+
+                    }
+                    historyButtonActionPerformed((javax.swing.JButton)evt.getSource());
+                }
         });
-
-        historyButton1.setText("This is translated text blah blah blah blah blah blah. Ajsflas to English 11/05/2023");
-        historyButton1.setToolTipText("default...");
-        historyButton1.setFocusable(false);
-        historyButton1.setMaximumSize(new java.awt.Dimension(273, 60));
-        historyButton1.setMinimumSize(new java.awt.Dimension(273, 60));
-        historyButton1.setPreferredSize(new java.awt.Dimension(273, 60));
-        historyButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historyButton1ActionPerformed(evt);
-            }
-        });
-
-        historyButton3.setEnabled(false);
-        historyButton3.setFocusable(false);
-        historyButton3.setMaximumSize(new java.awt.Dimension(273, 60));
-        historyButton3.setMinimumSize(new java.awt.Dimension(273, 60));
-        historyButton3.setPreferredSize(new java.awt.Dimension(273, 60));
-
-        historyButton4.setEnabled(false);
-        historyButton4.setFocusable(false);
-        historyButton4.setMaximumSize(new java.awt.Dimension(273, 60));
-        historyButton4.setMinimumSize(new java.awt.Dimension(273, 60));
-        historyButton4.setPreferredSize(new java.awt.Dimension(273, 60));
-        historyButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                historyButton4ActionPerformed(evt);
-            }
-        });
-
-        historyButton5.setEnabled(false);
-        historyButton5.setFocusable(false);
-        historyButton5.setMaximumSize(new java.awt.Dimension(273, 60));
-        historyButton5.setMinimumSize(new java.awt.Dimension(273, 60));
-        historyButton5.setPreferredSize(new java.awt.Dimension(273, 60));
-
-        historyButton6.setEnabled(false);
-        historyButton6.setFocusable(false);
-        historyButton6.setMaximumSize(new java.awt.Dimension(273, 60));
-        historyButton6.setMinimumSize(new java.awt.Dimension(273, 60));
-        historyButton6.setPreferredSize(new java.awt.Dimension(273, 60));
-
-        historyButton7.setEnabled(false);
-        historyButton7.setFocusable(false);
-        historyButton7.setMaximumSize(new java.awt.Dimension(273, 60));
-        historyButton7.setMinimumSize(new java.awt.Dimension(273, 60));
-        historyButton7.setPreferredSize(new java.awt.Dimension(273, 60));
-
-        historyButton8.setEnabled(false);
-        historyButton8.setFocusable(false);
-        historyButton8.setMaximumSize(new java.awt.Dimension(273, 60));
-        historyButton8.setMinimumSize(new java.awt.Dimension(273, 60));
-        historyButton8.setPreferredSize(new java.awt.Dimension(273, 60));
-
-        historyButton9.setEnabled(false);
-        historyButton9.setFocusable(false);
-        historyButton9.setMaximumSize(new java.awt.Dimension(273, 60));
-        historyButton9.setMinimumSize(new java.awt.Dimension(273, 60));
-        historyButton9.setPreferredSize(new java.awt.Dimension(273, 60));
-
-        historyButton10.setEnabled(false);
-        historyButton10.setFocusable(false);
-        historyButton10.setMaximumSize(new java.awt.Dimension(273, 60));
-        historyButton10.setMinimumSize(new java.awt.Dimension(273, 60));
-        historyButton10.setPreferredSize(new java.awt.Dimension(273, 60));
+        }
 
         javax.swing.GroupLayout historyInternalFrameLayout = new javax.swing.GroupLayout(historyInternalFrame.getContentPane());
         historyInternalFrame.getContentPane().setLayout(historyInternalFrameLayout);
@@ -228,42 +171,44 @@ public class MainUI extends javax.swing.JFrame {
             historyInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(historyInternalFrameLayout.createSequentialGroup()
                 .addGroup(historyInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(historyButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(historyButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(historyButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(historyButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(historyButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(historyButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(historyButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(historyButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(historyButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(historyButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(historyButtons[1], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(historyButtons[2], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(historyButtons[3], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(historyButtons[4], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(historyButtons[5], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(historyButtons[7], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(historyButtons[6], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(historyButtons[8], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(historyButtons[9], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(historyButtons[0], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         historyInternalFrameLayout.setVerticalGroup(
             historyInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(historyInternalFrameLayout.createSequentialGroup()
-                .addComponent(historyButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historyButtons[1], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(historyButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historyButtons[2], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(historyButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historyButtons[3], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(historyButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historyButtons[4], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(historyButton5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historyButtons[5], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(historyButton6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historyButtons[6], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(historyButton7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historyButtons[7], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(historyButton8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historyButtons[8], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(historyButton9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historyButtons[9], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(historyButton10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(historyButtons[0], javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+
 
         imageInternalFrame.setTitle("Image");
         imageInternalFrame.setFocusable(false);
@@ -287,7 +232,12 @@ public class MainUI extends javax.swing.JFrame {
         });
 
         snipButton.setText("Use Snipping Tool");
-
+        snipButton.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    snipButtonActionPerformed(evt);
+                }
+        });
+    
         javax.swing.GroupLayout imageInternalFrameLayout = new javax.swing.GroupLayout(imageInternalFrame.getContentPane());
         imageInternalFrame.getContentPane().setLayout(imageInternalFrameLayout);
         imageInternalFrameLayout.setHorizontalGroup(
@@ -387,7 +337,6 @@ public class MainUI extends javax.swing.JFrame {
         + "If the language is unknown, write 'UNKNOWN' after the flag and return the canned response '[Language not supported. Please try again.]'"
         + "SAY NOTHING ELSE AFTER THE BRACKETED TEXT.";
 
-
         // If there is text to translate, translate it, store the translation, and display it to the user.
         // TODO: It seems like the UI is incapable of showing some foreign text like Korean. This should be fixed.
         if (!escapedText.isEmpty()) {
@@ -397,7 +346,6 @@ public class MainUI extends javax.swing.JFrame {
             translationLabel.setText("Translated To: " + Locale.getDefault().getDisplayLanguage());
             ogtextLabel.setText("Detected Language: " + StorageManager.getTranslationLanguage());
         }
-
     }   
     
     /**
@@ -435,19 +383,16 @@ public class MainUI extends javax.swing.JFrame {
         return null;
     } 
 
-    private void historyButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
-    }                                              
+    private void historyButtonActionPerformed(javax.swing.JButton button) {                                               
+        button.setBackground(Color.red);
+    }
 
-    private void historyButton4ActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
-    }                                              
 
-    private void historyButton2ActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
-    }                                              
+    private void snipButtonActionPerformed(java.awt.event.ActionEvent evt) {                                               
+            
+        
+    }     
 
-    
     private void openfileButtonActionPerformed(java.awt.event.ActionEvent evt) {                                               
         resetText();
 
@@ -491,16 +436,6 @@ public class MainUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton historyButton1;
-    private javax.swing.JButton historyButton10;
-    private javax.swing.JButton historyButton2;
-    private javax.swing.JButton historyButton3;
-    private javax.swing.JButton historyButton4;
-    private javax.swing.JButton historyButton5;
-    private javax.swing.JButton historyButton6;
-    private javax.swing.JButton historyButton7;
-    private javax.swing.JButton historyButton8;
-    private javax.swing.JButton historyButton9;
     private javax.swing.JInternalFrame historyInternalFrame;
     private javax.swing.JInternalFrame imageInternalFrame;
     private javax.swing.JInternalFrame ogtextInternalFrame;
