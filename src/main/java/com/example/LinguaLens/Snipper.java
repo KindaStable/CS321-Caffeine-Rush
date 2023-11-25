@@ -10,11 +10,11 @@ import javax.swing.*;
 
 /** Getting a Rectangle of interest on the screen.
 Requires the MotivatedEndUser API - sold separately. */
-public class ScreenCaptureRectangle {
+public class Snipper {
 
     Rectangle captureRect;
 
-    ScreenCaptureRectangle(final BufferedImage screen) {
+    Snipper(final BufferedImage screen) {
         final BufferedImage screenCopy = new BufferedImage(
                 screen.getWidth(),
                 screen.getHeight(),
@@ -85,7 +85,7 @@ public class ScreenCaptureRectangle {
 
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new ScreenCaptureRectangle(screen);
+                new Snipper(screen);
             }
             
         });
