@@ -18,7 +18,6 @@ import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import com.example.LinguaLens.Reader.Vertex;
 
-import java.util.stream.Stream;
 import java.nio.file.Files;
 
 /**
